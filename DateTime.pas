@@ -16,16 +16,17 @@
   
   var (year1, year2) := ReadInteger2('Введите два года:');
   Assert((year1 > 0) and (year2 > 0));
+  Assert(year1 <= year2);
   var sum := 0;
   for var i := year1 to year2 do
   begin
     flag := False;
-    if ((i mod 4 = 0) and (i mod 100 <> 0)) or (i mod 400 = 0) then
-      flag := True;
-    if flag = True then
-      sum += 366
-    else
-      sum += 365;
+    if ((i mod 4 = 0) and (i mod 100 <> 0)) or (i mod 400 = 0) then flag := True;
+    if flag = True then sum += 366
+    else sum += 365;
   end;
   Print(sum);
+  
+  var hours := ReadInteger('Введите кол-во часов: ');
+  Print(hours * 3600);
 end.
